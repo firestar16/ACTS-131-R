@@ -3,10 +3,10 @@ title       : Using ggplot2 for ACTS 121
 description : This lab is about learning to use ggplot2 for graphics in ACTS 121
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:66550becfc
-## European Call Option (part 1)
+## Creating a Data Frame
 
 A European call option on stock index $S$ has strike price $K = 40$ and will expire at time $T$.  In this series of exercises you will learn how
-to use ggplot2 to create an attractive graph of the option's payoff at expiration.  The graphs you learn to create can be included in your Rmarkdown files or power point presentation slides.  In part 1 of this series you will set up the payoff function and create a data frame that will be used for plotting.
+to use ggplot2 to create an attractive graph of the option's payoff at expiration.  The graphs you learn to create can be included in your Rmarkdown files or power point presentation slides.  Set up the payoff function and create a data frame that will be used for plotting.
 
 
 
@@ -105,13 +105,10 @@ success_msg("Now that we have a data frame with the values we want, e can procee
 
 
 
-
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:fb5065fc71
 
 
-## European Call Option (part 2: initializing a ggplot object)
+## Initializing a ggplot object
 
 In this exercise you will only set up the ggplot object for the plot we want to create. 
 
@@ -191,7 +188,7 @@ success_msg("Good now with ggcall we can start adding geoms.  Notice that ggcall
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1ba590597c
 
-## European Call Option (part 3: adding a points geom)
+## Adding points
 
 Lets add points to the ggplot object using `geom_point()`
 
@@ -203,15 +200,17 @@ Lets add points to the ggplot object using `geom_point()`
   + `col  = 'red'`
   + `pch  = 18,`
   + `size = 3`
+* disply the result of the new ggcall
 
 *** =hint
 - `library(dplyr)`
 - `library(ggplot2)`
 
-- `ggcall + `
+- `ggcall` <- `ggcall + `
     `geom_point(col  = 'red',`
                `pch  = 18,`
                `size = 3)`
+- `ggcall`
 
 *** =pre_exercise_code
 ```{r}
@@ -230,31 +229,35 @@ DF <- DF %>%
   mutate(payoff = call_payoff(S = asset_price))
 
 ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
+
+ggcall
 ```
 
 *** =sample_code
 ```{r}
-# load dplyr and ggplot2
+# the previously defined ggcall is displayed to the right
 
 
 # add points to ggcall using geom_point()
 
+
+# display the resuts of the new ggcall
 
 ```
 
 *** =solution
 ```{r}
-# load dplyr and ggplot2
-library(dplyr)
-library(ggplot2)
+# the previously defined ggcall is displayed to the right
 
 
 # add points to ggcall using geom_point()
-ggcall + 
+ggcall <- ggcall + 
   geom_point(col  = 'red',
              pch  = 18,
              size = 3)
 
+# display the new ggcall
+ggcall
 ```
 
 *** =sct
@@ -275,18 +278,18 @@ the prvious exercise.  You can also see the plot that was generated.  In this ex
 
 
 *** =instructions
-* review the code and graph on the right
-* copy and paset the code where indicated 
-* add `geom_line(col = 'red')`
-* look at the new graph
+* the previous ggcall is available
+* review the existing ggcall plot on the right 
+* add `geom_line(col = 'red')` to ggcall
+* display the new ggcall
 
 
 *** =hint
-* `ggcall + `
-*  `geom_point(col  = 'red',`
-*             `pch  = 18,`
-*             `size = 3) +`
-*  `geom_line(col = 'red')`
+* `ggcall` -> `ggcall + `
+*   `geom_point(col  = 'red',`
+*              `pch  = 18,`
+*              `size = 3) +`
+*   `geom_line(col = 'red')`
 
 *** =pre_exercise_code
 ```{r}
@@ -306,76 +309,37 @@ DF <- DF %>%
 
 ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
 
-ggcall + 
+ggcall <- ggcall + 
   geom_point(col  = 'red',
              pch  = 18,
              size = 3)
+
+ggcall
 ```
 
 *** =sample_code
 ```{r}
-# Previous code
+# the previous ggcall is displayed on the right
 
-library(dplyr)
-library(ggplot2)
-
-call_payoff <- 
-  # compute a european call option payoff
-  function(S,K = 40){
-  (K <= S) * (S - K)}
-
-
-DF <- data_frame(asset_price = seq(from = 0, to = 80, by = 5))
-
-DF <- DF %>%
-  mutate(payoff = call_payoff(S = asset_price))
-
-ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
-
-# Copy the below here
-
-ggcall + 
-  geom_point(col  = 'red',
-             pch  = 18,
-             size = 3)
              
-# Paste and add geom_line()
+# add geom_line() to ggcall
+
+
+# display the new ggcall
 
 ```
 
 *** =solution
 ```{r}
-# Previous code
+# the previous ggcall is displayed on the right
 
-library(dplyr)
-library(ggplot2)
-
-call_payoff <- 
-  # compute a european call option payoff
-  function(S,K = 40){
-  (K <= S) * (S - K)}
-
-
-DF <- data_frame(asset_price = seq(from = 0, to = 80, by = 5))
-
-DF <- DF %>%
-  mutate(payoff = call_payoff(S = asset_price))
-
-ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
-
-# Copy the below here
-
-ggcall + 
-  geom_point(col  = 'red',
-             pch  = 18,
-             size = 3)
              
-# Paste and add geom_line()
-ggcall + 
-  geom_point(col  = 'red',
-             pch  = 18,
-             size = 3) +
+# add geom_line() to ggcall
+ggcall <- ggcall +
   geom_line(col = 'red')
+  
+# display the new ggcall
+ggcall
 ```
 
 *** =sct
@@ -396,15 +360,15 @@ You can use the `ylim()` function to achieve this
 *** =instructions
 * the dplyr and ggplot2 packages are already loaded in your workspace
 * the graph from the prvious exercise is shown on the right
-* add a `ylim()` to make the graph symmetric about $y=0$
+* add a `ylim()` to ggcall makint it symmetric about $y=0$
 
 *** =hint
-* `ggcall + `
-*  `geom_point(col  = 'red',`
-*             `pch  = 18,`
-*             `size = 3) +`
-*  `geom_line(col = 'red') +`
-*  `ylim(-40, 40)`
+* `ggcall` <- `ggcall + `
+*   `geom_point(col  = 'red',`
+*              `pch  = 18,`
+*              `size = 3) +`
+*   `geom_line(col = 'red') +`
+*   `ylim(-40, 40)`
 *** =pre_exercise_code
 ```{r}
 library(dplyr)
@@ -422,45 +386,42 @@ DF <- DF %>%
   mutate(payoff = call_payoff(S = asset_price))
 
 ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
-ggcall + 
+ggcall <- ggcall + 
   geom_point(col  = 'red',
              pch  = 18,
              size = 3) +
   geom_line(col = 'red')
+
+ggcall
 ```
 
 *** =sample_code
 ```{r}
-# ggplot2 is already loaded
+# the previous ggcall is displayed to the right
+ 
+ 
+# add a ylim() to ggcall
 
-# previous exercise
-ggcall + 
-  geom_point(col  = 'red',
-             pch  = 18,
-             size = 3) +
-  geom_line(col = 'red')
-  
-# copy, paste,  and add ylim() to make the graph symmetric about y = 0
+
+# display the new ggcall
+
+
 ```
 
 *** =solution
 ```{r}
-# ggplot2 is already loaded
-
-# previous exercise
-ggcall + 
-  geom_point(col  = 'red',
-             pch  = 18,
-             size = 3) +
-  geom_line(col = 'red')
-  
-# copy, paste,  and add ylim() to make the graph symmetric about y = 0
-ggcall + 
-  geom_point(col  = 'red',
-             pch  = 18,
-             size = 3) +
-  geom_line(col = 'red') +
+# the previous ggcall is displayed to the right
+ 
+ 
+# add a ylim() to ggcall
+ggcall <- ggcall + 
   ylim(-40, 40)
+  
+
+# display the new ggcall
+
+# copy, paste,  and add ylim() to make the graph symmetric about y = 0
+ggcall
 ```
 
 *** =sct
@@ -627,4 +588,179 @@ ggcall +
 ```{r}
 test_error()
 success_msg("Awesome!, Next we will change the axes labels")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:e36cf1a807
+## Axes Labels
+
+Lets change the $x$ and $y$ axis labels using `xlab()` and `ylab()`
+
+
+*** =instructions
+* the plot from the previous exercise is availabe
+* change the x-axis label to 'stock price ($)'
+* change the y-axis label to 'payoff ($)'
+
+*** =hint
+* `ggcall <-` 
+* `ggcall + `
+*   `xlab("stock price($)") +`
+*   `ylab("payoff ($)")`
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+library(dplyr)
+call_payoff <- 
+  # compute a european call option payoff
+  function(S,K = 40){
+  (K <= S) * (S - K)}
+
+
+DF <- data_frame(asset_price = seq(from = 0, to = 80, by = 5))
+
+DF <- DF %>%
+  mutate(payoff = call_payoff(S = asset_price))
+
+ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
+ggcall <- ggcall + 
+  geom_point(col  = 'red',
+             pch  = 18,
+             size = 3) +
+  geom_line(col = 'red') +
+  ylim(-40, 40) +
+  coord_fixed(ratio = 1) +
+  ggtitle("Call Option Payoff")
+  
+ggcall
+```
+
+*** =sample_code
+```{r}
+# Change the x and y axis labels using xlab() and ylab(). Save as ggcall
+  
+# display the new plot
+```
+
+*** =solution
+```{r}
+# Change the x and y axis labels using xlab() and ylab(), Save as ggcall
+ggcall <- 
+ggcall + 
+  xlab("stock price($)") +
+  ylab("payoff ($)")
+  
+  
+# display the new plot
+ggcall
+```
+
+*** =sct
+```{r}
+test_error()
+success_msg("Nice!, Now lets label the strike price")
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:7682218667
+## Addding Segments and Text
+
+The option strike price is 40.  Lets plot a vertical blue line segment that correspons to this strike price using `geom_segment()`. We can also label the line using `geom_text()`
+
+
+
+
+*** =instructions
+* ggcall from the previous exercise is already plotted
+* add a vertical line segment to ggcall 
+* label the vertical line "Strike Price = 40"
+
+*** =hint
+
+* `ggcall <- ggcall +`
+*  `geom_segment(x    = 40,`
+*               `xend = 40,`
+*               `y    = -40,`
+*               `yend = 0,`
+*               `col  = 'blue')`
+
+* `ggcall`
+
+
+
+* `ggcall <- ggcall +` 
+*   `geom_text(x     = 36,`
+*             `y     = -20,`
+*             `angle = 90,`
+*             `label = "Strike Price = 40",`
+*             `col   = 'blue')`
+
+* `ggcall`
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+library(dplyr)
+call_payoff <- 
+  # compute a european call option payoff
+  function(S,K = 40){
+  (K <= S) * (S - K)}
+
+
+DF <- data_frame(asset_price = seq(from = 0, to = 80, by = 5))
+
+DF <- DF %>%
+  mutate(payoff = call_payoff(S = asset_price))
+
+ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
+ggcall <- ggcall + 
+  geom_point(col  = 'red',
+             pch  = 18,
+             size = 3) +
+  geom_line(col = 'red') +
+  ylim(-40, 40) +
+  coord_fixed(ratio = 1) +
+  ggtitle("Call Option Payoff")+
+  xlab("stock price($)") +
+  ylab("payoff ($)")
+  
+  
+ggcall
+```
+
+*** =sample_code
+```{r}
+# add a vertical line segment using geom_segment()
+
+
+# label the vertical line using geom_text()
+```
+
+*** =solution
+```{r}
+# add a vertical line segment using geom_segment()
+ggcall <- ggcall +
+  geom_segment(x    = 40,
+               xend = 40,
+               y    = -40,
+               yend = 0,
+               col  = 'blue')
+
+ggcall
+
+# label the vertical line using geom_text()
+
+ggcall <- ggcall + 
+  geom_text(x     = 36,
+            y     = -20,
+            angle = 90,
+            label = "Strike Price = 40",
+            col   = 'blue')
+
+ggcall
+```
+
+*** =sct
+```{r}
+
 ```
