@@ -190,17 +190,19 @@ success_msg("Good now with ggcall we can start adding geoms.  Notice that ggcall
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1ba590597c
+
 ## European Call Option (part 3: adding a points geom)
-Lets add points to the ggplot object using 'geom_point()`
+
+Lets add points to the ggplot object using `geom_point()`
 
 
 *** =instructions
-- load `dplyr` and `ggplot2`
-- `ggcall` is  already defined
-- add `geom_point()` to ggcall 
-  + col  = 'red'
-  + pch  = 18,
-  + size = 4
+* load `dplyr` and `ggplot2`
+* `ggcall` is  already defined
+* add `geom_point()` to `ggcall` 
+  + `col  = 'red'`
+  + `pch  = 18,`
+  + `size = 4`
 
 *** =hint
 - `library(dplyr)`
