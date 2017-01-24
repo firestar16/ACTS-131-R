@@ -105,7 +105,11 @@ success_msg("Now that we have a data frame with the values we want, e can procee
 
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:9b594565ad
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:fb5065fc71
+
 
 ## European Call Option (part 2: initializing a ggplot object)
 
@@ -120,14 +124,14 @@ In this exercise you will only set up the ggplot object for the plot we want to 
 * Create `ggcall` <- `ggplot(DF, aes(x = asset_price, y = payoff))`
 
 *** =hint
-# Use ls() to verifu that `DF` is loaded
-ls()
 
-# Use glimpse() to review the stucture of `DF`
-glimpse(DF)
+* `ls()`
 
-# create gg_call
-gg_call <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
+* `glimpse(DF)`
+
+* `gg_call` <- 
+
+    `ggplot(data = DF, aes(x = asset_price, y = payoff))` 
 
 *** =pre_exercise_code
 ```{r}
@@ -179,8 +183,78 @@ ggcall
 *** =sct
 ```{r}
 test_error()
-test_object("ggcall",
-            undefined_msg = "Make sure to define `ggcall`")
-test_output_contains("ggcall")
-success_msg("Good now with gg_call we can start adding geoms")
+
+success_msg("Good now with ggcall we can start adding geoms.  Notice that ggcall only sets up the axis, gridlines, etc.  If we want to add points, lines, or regions we need to add geoms to the ggplot object.")
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:1ba590597c
+## European Call Option (part 3: adding a points geom)
+Lets add points to the ggplot object using 'geom_point()`
+
+
+*** =instructions
+- load `dplyr` and `ggplot2`
+- `ggcall` is  already defined
+- add `geom_point()` to ggcall 
+  + col  = 'red'
+  + pch  = 18,
+  + size = 4
+
+*** =hint
+- `library(dplyr)`
+- `library(ggplot2)`
+
+- `ggcall + `
+    `geom_point(col  = 'red',`
+               `pch  = 18,`
+               `size = 4)`
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+library(ggplot2)
+call_payoff <- 
+  # compute a european call option payoff
+  function(S,K = 40){
+  (K <= S) * (S - K)}
+
+
+DF <- data_frame(asset_price = seq(from = 0, to = 80, by = 5))
+
+DF <- DF %>%
+  mutate(payoff = call_payoff(S = asset_price))
+
+ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
+```
+
+*** =sample_code
+```{r}
+# load dplyr and ggplot2
+
+
+# add points to ggcall using geom_point()
+
+
+```
+
+*** =solution
+```{r}
+# load dplyr and ggplot2
+library(dplyr)
+library(ggplot2)
+
+
+# add points to ggcall using geom_point()
+ggcall + 
+  geom_point(col  = 'red',
+             pch  = 18,
+             size = 4)
+
+```
+
+*** =sct
+```{r}
+
 ```
