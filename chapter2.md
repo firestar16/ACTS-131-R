@@ -473,36 +473,39 @@ DF <- DF %>%
   mutate(payoff = call_payoff(S = asset_price))
 
 ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
-ggcall + 
+ggcall <- ggcall + 
   geom_point(col  = 'red',
              pch  = 18,
              size = 3) +
   geom_line(col = 'red') +
   ylim(-40, 40)
+ggcall
 ```
 
 *** =sample_code
 ```{r}
-# add coord_fixed() with the appropriate argument to the code below
-ggcall + 
-  geom_point(col  = 'red',
-             pch  = 18,
-             size = 3) +
-  geom_line(col = 'red') +
-  ylim(-40, 40)
+# the previous ggcall is displayed to the right
 
+
+# add coord_fixed() with the appropriate argument to the ggcall
+
+
+
+# display the new ggcall
 ```
 
 *** =solution
 ```{r}
-# add coord_fixed() with the appropriate argument to the code below
-ggcall + 
-  geom_point(col  = 'red',
-             pch  = 18,
-             size = 3) +
-  geom_line(col = 'red') +
-  ylim(-40, 40) +
+# the previous ggcall is displayed to the right
+
+
+# add coord_fixed() with the appropriate argument to the ggcall
+ggcall <- ggcall +
   coord_fixed(ratio = 1)
+
+
+# display the new ggcall
+ggcall
 ```
 
 *** =sct
@@ -520,19 +523,12 @@ You can add a title to the graph using `ggtitle()`.  Adjusting the color, size, 
 
 *** =instructions
 * the previous plot is shown on the right
-* add a title to your plot 
-* add `ggtitle("Call Option Payoff")
-* review the new graph to see the difference
+* add `ggtitle("Call Option Payoff")` to ggcall
+* display the result of the new ggcall
 
 *** =hint
-* `ggcall +` 
-* `geom_point(col  = 'red',`
-*             `pch  = 18,`
-*             `size = 3) +`
-*  `geom_line(col = 'red') +`
-*  `ylim(-40, 40) +`
-*  `coord_fixed(ratio = 1) +`
-*  `ggtitle("Call Option Payoff")`
+* `ggcall` <- `ggcall +` 
+*    `ggtitle("Call Option Payoff")`
 
 *** =pre_exercise_code
 ```{r}
@@ -551,38 +547,45 @@ DF <- DF %>%
   mutate(payoff = call_payoff(S = asset_price))
 
 ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
-ggcall + 
+ggcall <- ggcall + 
   geom_point(col  = 'red',
              pch  = 18,
              size = 3) +
   geom_line(col = 'red') +
   ylim(-40, 40) +
-  coord_fixed(ratio = 1)
+  coord_fixed(ratio = 1) 
+ggcall
 ```
 
 *** =sample_code
 ```{r}
-# add coord_fixed() with the appropriate argument to the code below
-ggcall + 
-  geom_point(col  = 'red',
-             pch  = 18,
-             size = 3) +
-  geom_line(col = 'red') +
-  ylim(-40, 40) +
-  coord_fixed(ratio = 1)
+# the previous ggcall is displayed on the right
+
+
+
+# add a title to ggcall
+
+
+
+# display the result of the new ggcall
+
+
+
 ```
 
 *** =solution
 ```{r}
-# add coord_fixed() with the appropriate argument to the code below
-ggcall + 
-  geom_point(col  = 'red',
-             pch  = 18,
-             size = 3) +
-  geom_line(col = 'red') +
-  ylim(-40, 40) +
-  coord_fixed(ratio = 1) +
+# the previous ggcall is displayed on the right
+
+
+
+# add a title to ggcall
+ggcall <- ggcall + 
   ggtitle("Call Option Payoff")
+
+
+# display the result of the new ggcall
+ggcall
 ```
 
 *** =sct
