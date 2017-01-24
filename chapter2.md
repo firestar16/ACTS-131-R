@@ -215,6 +215,7 @@ Lets add points to the ggplot object using 'geom_point()`
 ```{r}
 library(dplyr)
 library(ggplot2)
+
 call_payoff <- 
   # compute a european call option payoff
   function(S,K = 40){
