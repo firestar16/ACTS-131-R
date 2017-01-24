@@ -369,6 +369,7 @@ You can use the `ylim()` function to achieve this
 *              `size = 3) +`
 *   `geom_line(col = 'red') +`
 *   `ylim(-40, 40)`
+
 *** =pre_exercise_code
 ```{r}
 library(dplyr)
