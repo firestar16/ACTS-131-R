@@ -641,21 +641,29 @@ ggcall
 
 *** =sample_code
 ```{r}
-# Change the x and y axis labels using xlab() and ylab(). Save as ggcall
+# the previous ggcall is displayed on the right
   
-# display the new plot
+  
+  
+# add an xlab() and ylab() to ggcall
+
+
+
+# display the new ggcall
 ```
 
 *** =solution
 ```{r}
-# Change the x and y axis labels using xlab() and ylab(), Save as ggcall
-ggcall <- 
-ggcall + 
+# the previous ggcall is displayed to the right
+
+
+# add an xlab() and ylab() to ggcall
+ggcall <- ggcall + 
   xlab("stock price($)") +
   ylab("payoff ($)")
-  
-  
-# display the new plot
+
+
+# display the new ggcall
 ggcall
 ```
 
@@ -667,7 +675,7 @@ success_msg("Nice!, Now lets label the strike price")
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:7682218667
-## Addding Segments and Text
+## Adding Segments and Text
 
 The option strike price is 40.  Lets plot a vertical blue line segment that correspons to this strike price using `geom_segment()`. We can also label the line using `geom_text()`
 
@@ -734,15 +742,25 @@ ggcall
 
 *** =sample_code
 ```{r}
-# add a vertical line segment using geom_segment()
+# the previous ggcall is displayed on the right
 
 
-# label the vertical line using geom_text()
+# add a line segment to ggcall and display the new ggcall
+
+
+
+# add text to ggcall and display the new ggcall
+
+
+
 ```
 
 *** =solution
 ```{r}
-# add a vertical line segment using geom_segment()
+# the previous ggcall is displayed on the right
+
+
+# add a line segment to ggcall and display the new ggcall
 ggcall <- ggcall +
   geom_segment(x    = 40,
                xend = 40,
@@ -752,8 +770,8 @@ ggcall <- ggcall +
 
 ggcall
 
-# label the vertical line using geom_text()
 
+# add text to ggcall and display the new ggcall
 ggcall <- ggcall + 
   geom_text(x     = 36,
             y     = -20,
@@ -762,6 +780,7 @@ ggcall <- ggcall +
             col   = 'blue')
 
 ggcall
+
 ```
 
 *** =sct
