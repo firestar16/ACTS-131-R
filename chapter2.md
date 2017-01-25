@@ -705,7 +705,8 @@ The option strike price is 40.  Lets plot a vertical blue line segment that corr
 *             `y     = -20,`
 *             `angle = 90,`
 *             `label = "Strike Price = 40",`
-*             `col   = 'blue')`
+*             `col   = 'blue',`
+*             `size  = 10)`
 
 * `ggcall`
 
@@ -777,7 +778,8 @@ ggcall <- ggcall +
             y     = -20,
             angle = 90,
             label = "Strike Price = 40",
-            col   = 'blue')
+            col   = 'blue',
+            size =10)
 
 ggcall
 
@@ -785,5 +787,124 @@ ggcall
 
 *** =sct
 ```{r}
+test_error()
+success_msg("Nice.  Now lets add text to label the call payoff")
+```
 
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:8b28b6855b
+## Adding Labels (2)
+
+Lets add another label on the graph.  Add a red "Call Payoff" above the call payoff lines
+
+
+*** =instructions
+* The previous `ggcall` is shown at the right
+* Add `geom_text()` to `ggcall` with 
+  - `label = 'Call Payoff`,
+  - `col = 'red'`,
+  - `x = 60`,
+  - `y = 25`,
+  - `angle = 45`,
+  - `size = 10`
+* display the new `ggcall`
+
+*** =hint
+`ggcall <- ggcall +`
+  `geom_text(label = 'Call Payoff',`
+            `col   = 'red',`
+            `x     = 60,`
+            `y     = 25,`
+            `angle = 45,`
+            `size  = 10)`
+
+`ggcall`
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+library(dplyr)
+call_payoff <- 
+  # compute a european call option payoff
+  function(S,K = 40){
+  (K <= S) * (S - K)}
+
+
+DF <- data_frame(asset_price = seq(from = 0, to = 80, by = 5))
+
+DF <- DF %>%
+  mutate(payoff = call_payoff(S = asset_price))
+
+ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
+ggcall <- ggcall + 
+  geom_point(col  = 'red',
+             pch  = 18,
+             size = 3) +
+  geom_line(col = 'red') +
+  ylim(-40, 40) +
+  coord_fixed(ratio = 1) +
+  ggtitle("Call Option Payoff")+
+  xlab("stock price($)") +
+  ylab("payoff ($)") +
+  geom_segment(x    = 40,
+               xend = 40,
+               y    = -40,
+               yend = 0,
+               col  = 'blue') +
+    geom_text(x     = 36,
+            y     = -20,
+            angle = 90,
+            label = "Strike Price = 40",
+            col   = 'blue',
+            size   = 10)
+  
+  
+ggcall
+```
+
+*** =sample_code
+```{r}
+# the existing ggcall is displayed on the right
+
+
+
+# add geom_text() with arguments to ggcall
+
+
+
+# display the new ggcall (click to expand the plot)
+
+
+
+
+
+
+```
+
+*** =solution
+```{r}
+# the existing ggcall is displayed on the right
+
+
+
+# add geom_text() with arguments to ggcall
+ggcall <- ggcall +
+  geom_text(label = 'Call Payoff',
+            col   = 'red',
+            x     = 60,
+            y     = 25,
+            angle = 45,
+            size  = 10)
+
+
+# display the new ggcall (click to expand the plot)
+ggcall
+
+
+```
+
+*** =sct
+```{r}
+test_error()
 ```
