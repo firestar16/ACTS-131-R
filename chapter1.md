@@ -21,7 +21,7 @@ to solve for the constant $c$ such that
 $$
 f(x) = 
 \begin{cases}
-\dfrac{c}{(x+40)^2} &, \ 0 < x < 40 \\\
+\dfrac{c}{(x+10)^2} &, \ 0 < x < 40 \\\
 &  \\\
 0 &, \ \text{otherwise} \\\
 \end{cases}

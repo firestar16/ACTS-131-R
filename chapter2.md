@@ -695,19 +695,15 @@ The option strike price is 40.  Lets plot a vertical blue line segment that corr
 *               `y    = -40,`
 *               `yend = 0,`
 *               `col  = 'blue')`
-
 * `ggcall`
-
-
-
 * `ggcall <- ggcall +` 
 *   `geom_text(x     = 36,`
 *             `y     = -20,`
 *             `angle = 90,`
 *             `label = "Strike Price = 40",`
 *             `col   = 'blue',`
-*             `size  = 10)`
-
+*             `size  = 10,`
+*             `fontface = 3)`
 * `ggcall`
 
 *** =pre_exercise_code
@@ -779,7 +775,8 @@ ggcall <- ggcall +
             angle = 90,
             label = "Strike Price = 40",
             col   = 'blue',
-            size =10)
+            size =10,
+            fontface = 3)
 
 ggcall
 
@@ -794,7 +791,7 @@ success_msg("Nice.  Now lets add text to label the call payoff")
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8b28b6855b
-## Adding Labels (2)
+## Adding Text (2)
 
 Lets add another label on the graph.  Add a red "Call Payoff" above the call payoff lines
 
@@ -907,4 +904,98 @@ ggcall
 *** =sct
 ```{r}
 test_error()
+success_msg("Good!, The title and axis are still to small.  Lets find out how to adjust them using themes")
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:114f813284
+## Themes
+
+We are almost done.  Supose you want to adjust the size, color and font of the axis labels and plot title. Changing these can be done using `theme()`.  This exercise shows how to 
+
+
+
+*** =instructions
+
+*** =hint
+test
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+library(dplyr)
+call_payoff <- 
+  # compute a european call option payoff
+  function(S,K = 40){
+  (K <= S) * (S - K)}
+
+
+DF <- data_frame(asset_price = seq(from = 0, to = 80, by = 5))
+
+DF <- DF %>%
+  mutate(payoff = call_payoff(S = asset_price))
+
+ggcall <- ggplot(data = DF, aes(x = asset_price, y = payoff)) 
+ggcall <- ggcall + 
+  geom_point(col  = 'red',
+             pch  = 18,
+             size = 3) +
+  geom_line(col = 'red') +
+  ylim(-40, 40) +
+  coord_fixed(ratio = 1) +
+  ggtitle("Call Option Payoff")+
+  xlab("stock price($)") +
+  ylab("payoff ($)") +
+  geom_segment(x    = 40,
+               xend = 40,
+               y    = -40,
+               yend = 0,
+               col  = 'blue') +
+    geom_text(x     = 36,
+            y     = -20,
+            angle = 90,
+            label = "Strike Price = 40",
+            col   = 'blue',
+            size  = 10) +
+    geom_text(label = 'Call Payoff',
+            col   = 'red',
+            x     = 60,
+            y     = 25,
+            angle = 45,
+            size  = 10)
+  
+  
+ggcall
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+# the existing ggcall is shown at the right
+
+
+
+
+# add a theme() and elements_text() to adjust the axis labels and plot title
+ggcall <- ggcall +
+  theme(
+    axis.title.x = element_text(size = 8,  color = 'darkgreen', face = 'italic', hjust = 0.5),
+    axis.title.y = element_text(size = 8,  color = 'darkgreen', face = 'italic', hjust = 0.5),
+    title        = element_text(size = 10, color = 'darkgreen', face = 'italic', hjust = 0.5))
+
+
+
+# view the new ggcall (expand the plot by clicking the arrow symbols)
+ggcall
+
+
+```
+
+*** =sct
+```{r}
+
 ```
