@@ -330,7 +330,7 @@ Calculate the value of $p$ such that $E[X] = 2$
 # Vectorize ex
 
 
-# Estimate a solution to the equation ex(p) = 2 and save ave as p_answer
+# Estimate a solution to the equation ex(p) = 2 and save as p_answer
 
 
 # Print p_answer to the console
@@ -354,9 +354,10 @@ ex <- function(p){integrate(function(x){x * f(x, p)}, lower = 1, upper = Inf)$va
 ex <- Vectorize(ex)
 
 # Estimate a solution to the equation e(p) = 2 and save as p_answer
-values   <- ex(seq(2.01, 5, by = 0.001)) 
+p_vals   <- seq(from = 2.01,  to = 5, by = 0.001)
+values   <- ex(p_vals) 
 index    <- which.min(abs(values - 2))
-p_answer <- values[index]
+p_answer <- p_vals[index]
 
 # Print p_answer to the console
 p_answer
@@ -374,7 +375,7 @@ test_object("ex",
 test_output_contains(p_answer,
                      times = 1,
                      incorrect_msg = "Did you print out p_answer")
-success_msg("Good job! You are getting really good at this!")
+success_msg("Good job! You are awesome at this!")
 ```
 
 
