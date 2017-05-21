@@ -407,7 +407,7 @@ Calculate $Var[X/(1-X)]$
 
 - Compute $E[g(X)]^2$ and save as `ex_g2`
 
-- Sovle for $V[g(X)]$ and save as `var_g`
+- Solve for $V[g(X)]$ and save as `var_g`
 
 *** =hint
 * Make sure to define the density function as `f` and $X/ (X-1)$ as `g`
