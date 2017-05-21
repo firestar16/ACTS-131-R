@@ -426,13 +426,13 @@ library(stats)
 # define g = X / (X - 1)
 
 
-# Compute E[X / (X-1)].  Save as ex_g1
+# Compute E[g(X)].  Save as ex_g1
 
 
-# Compute E[(X / (X-1))^2]. Save as ex_g2
+# Compute E[g(X) ^ 2]. Save as ex_g2
 
 
-# Solve for V[x / (X-1)].  Save as var_g
+# Solve for V[g(X)].  Save as var_g
 
 ```
 
@@ -444,14 +444,14 @@ f <- function(x){(0 < x & x < 1) * 60 * x ^ 3 * (1 - x) ^ 2}
 # define g = X / (X - 1)
 g <- function(x){x / (x-1)}
 
-# Compute E[X / (X-1)].  Save as ex_g1
+# Compute E[g(X)].  Save as ex_g1
 (ex_g1 <- integrate(f = function(x){g(x)*f(x)}, lower = 0, upper = 1)$value)
 
-# Compute E[(X / (X-1))^2]. Save as ex_g2
+# Compute E[g(X) ^ 2]. Save as ex_g2
 (ex_g2 <- integrate(f = function(x){g(x)^2 * f(x)}, lower = 0, upper = 1)$value)
 
-# Solve for V[x / (X-1)].  Save as var_g
-(var_g = ex_g2 - (ex_g1)^2)
+# Solve for V[g(X)].  Save as var_g
+(var_g = ex_g2 - (ex_g1) ^ 2)
 ```
 
 *** =sct
