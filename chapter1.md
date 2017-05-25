@@ -502,7 +502,7 @@ Given that a fire loss exceed 8, calculate the probability that it exceeds 16.
 
 * Define the conditional density function `f_A`
 
-* Compute the conditional expected value $P[X > 16|  X > 8]$.  Assign to `cond_prob`
+* Compute the conditional probability $P[X > 16 | X > 8]$.  Assign to `cond_prob`
 
 *** =hint
 
