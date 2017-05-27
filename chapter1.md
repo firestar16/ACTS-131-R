@@ -598,7 +598,7 @@ density function
 
 $$f(x,y) = 
 \begin{cases}
-\dfrac{1}{64} \left(1 - xy^2 \right ) &, \ 2 \leq x \leq 10, \ 0 \leq y \leq 1 \\\
+\dfrac{1}{64} \left(10 - xy^2 \right ) &, \ 2 \leq x \leq 10, \ 0 \leq y \leq 1 \\\
  &  \\\
 0 &, \ \text{otherwise} \\\
 \end{cases}
