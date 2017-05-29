@@ -742,9 +742,11 @@ $$
 \begin{eqnarray}
 f(x,y) & = & 
 \begin{cases}
+& \\\
 \dfrac{x+y}{8}&, \  \ 0 < x < 2, \ \ 0 < y < 2 \\\
 & \\\
 0 &, \ \  \text{otherwise}\\\
+& \\\
 \end{cases}\\\
 \end{eqnarray}
 $$
@@ -753,7 +755,7 @@ Calculate the probability that the device fails during its first hour of operati
 
 *** =instructions
 * Load the `stats` package
-* `compute_Iterated_Integral()` is already loaded
+* `iterated_integral()` is already loaded
 * Define the joint density function `f(x, y)`
 * Define a function `r(x)` for the region of integration
 * Calculate $P[\min\\{X, Y\\} \leq 1]$ assign to prob_hour
@@ -775,7 +777,7 @@ Calculate the probability that the device fails during its first hour of operati
 
 `prob_hour <- `
 
-`compute_Iterated_Integral(`
+`iterated_integral(`
 
 -  `f  = function(x, y){r(x,y) * f(x,y)},`
 -  `xl = function(y){0},`
@@ -789,7 +791,7 @@ Calculate the probability that the device fails during its first hour of operati
 
 *** =pre_exercise_code
 ```{r}
-compute_Iterated_Integral <- function(f , xl, xu, yl, yu, dx){
+iterated_integral <- function(f , xl, xu, yl, yu, dx){
   # computes the iterated integral of f over the region defined by 
   # xl < x < xu and yl < y < yu
   # Args:
@@ -846,7 +848,7 @@ r <- function(x, y){(0 < x & x < 2) * (0 < y & y < 2) * (x < 1 | y < 1)}
 
 # compute P[min{X,Y} <=1] and assign to prob_hour
 prob_hour <- 
-  compute_Iterated_Integral(
+  iterated_integral(
     f  = function(x, y){r(x,y) * f(x,y)},
     xl = function(y){0},
     xu = function(y){2},
