@@ -983,7 +983,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 
 *** =solution
 ```{r}
-# use ls() to see that compute_Iterated_Integral is already defined
+# use ls() to see that iterated_integral is already defined
 ls()
 
 # load the stats package
