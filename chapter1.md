@@ -610,7 +610,7 @@ accident.
 
 *** =instructions
 * Load the `stats` package
-* `compute_Iterated_Integral()` is already loaded
+* `iterated_integral()` is already loaded
 * Define the joint density function `f(x, y)`
 * Calculate the expected value, $E[X]$
 * Use the formula
@@ -630,7 +630,7 @@ $\ \ $ `(1 / 64) * (10 - x * y ^ 2)}`
   
 `expected_value_x <-` 
 
-`compute_Iterated_Integral(`
+`iterated_integral(`
 
 - `f = function(x,y){x * f(x,y)},` 
 
@@ -649,7 +649,7 @@ $\ \ $ `(1 / 64) * (10 - x * y ^ 2)}`
 
 *** =pre_exercise_code
 ```{r}
-compute_Iterated_Integral <- function(f , xl, xu, yl, yu, dx){
+iterated_integral <- function(f , xl, xu, yl, yu, dx){
   # computes the iterated integral of f over the region defined by 
   # xl < x < xu and yl < y < yu
   # Args:
@@ -704,7 +704,7 @@ f <-
   
 # Calculate E[X] and assign to expected_value_x
 expected_value_x <- 
-  compute_Iterated_Integral(
+  iterated_integral(
     f = function(x,y){x * f(x,y)}, 
     xl = function(y){2}, 
     xu = function(y){10},
