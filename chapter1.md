@@ -884,9 +884,11 @@ A company is reviewing tornado damage claims under a farm insurance policy.  Let
 $$
 \begin{eqnarray}
 f(x,y) & = & \begin{cases}
+& \\\
 6[1-(x+y)] &, \ 0 < x,\ 0 < y,\ x + y < 1\\\
 & \\\
 0 &, \ \text{otherwise}\\\
+& \\\
 \end{cases}
 \end{eqnarray}
 $$
@@ -894,7 +896,7 @@ $$
 Calculate the probability that the portion of a claim representing damage to the house is less than 0.2.
 
 *** =instructions
-`compute_Iterated_Integral is already loaded
+`iterated_integral is already loaded
 
 Use `ls()` to verify this
 
@@ -920,7 +922,7 @@ Assign the probabiity to `prob_house_0.2`
 
 `prob_house_0.2 <-`
 
-`compute_Iterated_Integral(`
+`iterated_integral(`
 
 - `xl = function(y){0},`
 - `xu = function(y){0.2},`
@@ -934,7 +936,7 @@ Assign the probabiity to `prob_house_0.2`
 
 *** =pre_exercise_code
 ```{r}
-compute_Iterated_Integral <- function(f , xl, xu, yl, yu, dx){
+iterated_integral <- function(f , xl, xu, yl, yu, dx){
   # computes the iterated integral of f over the region defined by 
   # xl < x < xu and yl < y < yu
   # Args:
@@ -992,7 +994,7 @@ f <- function(x,y){(0 < x & 0 < y)*(x < 1-y)*6*(1-(x+y))}
 
 # compute P[X < 0.2] assign to prob_house_0.2
 prob_house_0.2 <- 
-  compute_Iterated_Integral(
+  iterated_integral(
   xl = function(y){0},
   xu = function(y){0.2},
   yl = function(x){0},
