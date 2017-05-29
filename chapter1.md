@@ -896,7 +896,7 @@ $$
 Calculate the probability that the portion of a claim representing damage to the house is less than 0.2.
 
 *** =instructions
-`iterated_integral is already loaded
+`iterated_integral` is already loaded
 
 Use `ls()` to verify this
 
@@ -964,7 +964,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 
 *** =sample_code
 ```{r}
-# use ls() to see that compute_Iterated_Integral is already defined
+# use ls() to see that iterated_integral is already defined
 
 
 # load the stats package
