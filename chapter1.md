@@ -858,12 +858,8 @@ prob_hour
 *** =sct
 ```{r}
 test_error()
-test_object("f",
-            undefined_msg = "Make sure to define the density f(x, y)",
-            incorrect_msg = "Your definition of f has a problem")
-test_object("r",
-            undefined_msg = "Make sure define r(x,y)",
-            incorrect_msg = "you definition of r is incorrect")
+
+
 test_object("prob_hour",
             undefined_msg = "Make sure define prob_hour",
             incorrect_msg = "your value of prob_hour is incorrect")            
@@ -1007,9 +1003,7 @@ prob_house_0.2
 *** =sct
 ```{r}
 test_error()
-test_object("f",
-            undefined_msg = "Make sure to define the density f(x, y)",
-            incorrect_msg = "Your definition of f has a problem")
+
 test_object("prob_house_0.2",
             undefined_msg = "Make sure define prob_house_0.2",
             incorrect_msg = "your value of prob_house_0.2 is incorrect")            
@@ -1042,7 +1036,7 @@ In this question we want to compute the probability $P[Y < X]$.
 *** =instructions
 load the `stats` package
 
-use`ls()` to check for `compute_Iterated_Integral`
+use`ls()` to check for `iterated_integral`
 
 define the joint density function as `f`
 
@@ -1061,7 +1055,7 @@ assign your answer to `prob_xy`
 `(0 < x)*(0 < y)*(1/6)*exp(-x/2)*exp(-y/3)}`
 
 
-`prob_xy <- compute_Iterated_Integral(`
+`prob_xy <- iterated_integral(`
 
 -  `xu = function(y){Inf},`
 
@@ -1078,7 +1072,7 @@ assign your answer to `prob_xy`
 
 *** =pre_exercise_code
 ```{r}
-compute_Iterated_Integral <- function(f , xl, xu, yl, yu, dx){
+iterated_integral <- function(f , xl, xu, yl, yu, dx){
   # computes the iterated integral of f over the region defined by 
   # xl < x < xu and yl < y < yu
   # Args:
@@ -1109,7 +1103,7 @@ compute_Iterated_Integral <- function(f , xl, xu, yl, yu, dx){
 # load the stats package
 
 
-# use ls() to check for compute_Iterated_Integral
+# use ls() to check for iterated_integral
 
 
 # define the joint density function f
@@ -1127,13 +1121,14 @@ compute_Iterated_Integral <- function(f , xl, xu, yl, yu, dx){
 # load the stats package
 library(stats)
 
-# use ls() to check for compute_Iterated_Integral
+# use ls() to check for iterated_integral
+ls()
 
 # define the joint density function f
 f <- function(x,y){(0 < x)*(0 < y)*(1/6)*exp(-x/2)*exp(-y/3)}
 
 # compute P[Y < X] and assign to prob_xy
-prob_xy <- compute_Iterated_Integral(
+prob_xy <- iterated_integral(
   f  = f,
   xu = function(y){Inf},
   xl = function(y){0},
@@ -1152,8 +1147,7 @@ prob_xy
 ```{r}
 test_error()
 test_object("f",
-            undefined_msg = "Make sure to define the density f(x, y)",
-            incorrect_msg = "Your definition of f has a problem")
+            undefined_msg = "Make sure to define the density f(x, y)")
 test_object("prob_xy",
             undefined_msg = "Make sure define prob_xy",
             incorrect_msg = "your value of prob_xy is incorrect")  
@@ -1184,7 +1178,7 @@ Calculate the probability that the total company loss is at least 1.
 * load the `stats` package
 
 
-* use `ls()` to check for `compute_Iterated_Integral`
+* use `ls()` to check for `iterated_integral`
 
 
 * define the joint density function `f`
@@ -1207,7 +1201,7 @@ Calculate the probability that the total company loss is at least 1.
 `(0 < x & x < 1) * (0 < y & y < 2) * (2 * x + 2 - y) / 4}`
 
 
-`prob_xy <- compute_Iterated_Integral(`
+`prob_xy <- iterated_integral(`
 
 -  `f  = f,`
 
@@ -1226,7 +1220,7 @@ Calculate the probability that the total company loss is at least 1.
 
 *** =pre_exercise_code
 ```{r}
-compute_Iterated_Integral <- function(f , xl, xu, yl, yu, dx){
+iterated_integral <- function(f , xl, xu, yl, yu, dx){
   # computes the iterated integral of f over the region defined by 
   # xl < x < xu and yl < y < yu
   # Args:
@@ -1257,7 +1251,7 @@ compute_Iterated_Integral <- function(f , xl, xu, yl, yu, dx){
 # load the stats package
 
 
-# use ls() to check for compute_Iterated_Integral
+# use ls() to check for iterated_integral
 
 
 # define the joint density function f
@@ -1275,7 +1269,7 @@ compute_Iterated_Integral <- function(f , xl, xu, yl, yu, dx){
 # load the stats package
 library(stats)
 
-# use ls() to check for compute_Iterated_Integral
+# use ls() to check for iterated_integral
 ls()
 
 # define the joint density function f
@@ -1283,7 +1277,7 @@ f <- function(x,y){
   (0 < x & x < 1) * (0 < y & y < 2) * (2 * x + 2 - y) / 4}
 
 # compute P[X + Y > 1] and assign to prob_xy
-prob_xy <- compute_Iterated_Integral(
+prob_xy <- iterated_integral(
   f  = f,
   dx = 2,
   xl = function(y){0},
@@ -1299,8 +1293,7 @@ prob_xy
 ```{r}
 test_error()
 test_object("f",
-            undefined_msg = "Make sure to define the density f(x, y)",
-            incorrect_msg = "Your definition of f has a problem")
+            undefined_msg = "Make sure to define the density f(x, y)")
 test_object("prob_xy",
             undefined_msg = "Make sure define prob_xy",
             incorrect_msg = "your value of prob_xy is incorrect")  
