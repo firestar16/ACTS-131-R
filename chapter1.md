@@ -723,12 +723,7 @@ expected_value_x
 *** =sct
 ```{r}
 test_error()
-test_object("f",
-            undefined_msg = "Make sure to define the density f(x, y)",
-            incorrect_msg = "Your definition of f has a problem")
-test_object("expected_value_x",
-            undefined_msg = "Make sure define expeted_value_x",
-            incorrect_msg = "you value for E[X] is incorrect")
+
 success_msg("Perfect!, Now you can compute iterated integrals using R!!")
 ```
 
