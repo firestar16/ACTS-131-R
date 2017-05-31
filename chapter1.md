@@ -1052,7 +1052,7 @@ assign your answer to `prob_xy`
 
 `f <- function(x,y){`
 
-`(0 < x)*(0 < y)*(1/6)*exp(-x/2)*exp(-y/3)}`
+`(0 < x)*(0 < y) * (1 / 6) * exp(-x / 2) * exp(-y / 3)}`
 
 
 `prob_xy <- iterated_integral(`
@@ -1125,7 +1125,7 @@ library(stats)
 ls()
 
 # define the joint density function f
-f <- function(x,y){(0 < x)*(0 < y)*(1/6)*exp(-x/2)*exp(-y/3)}
+f <- function(x,y){(0 < x) * (0 < y) * (1 / 6) * exp(-x / 2) * exp(-y / 3)}
 
 # compute P[Y < X] and assign to prob_xy
 prob_xy <- iterated_integral(
@@ -1165,7 +1165,7 @@ $X$ and $Y$ have joint density function
 $$
 f(x,y) =
 \begin{cases}
-\dfrac{2x+2-y}{4} &,\ 0 <x <1, \ 0 < y < 2  \\\
+\dfrac{2x + 2 - y}{4} &,\ 0 <x <1, \ 0 < y < 2  \\\
 &   \\\
 0 &,  \ \text{otherwise} \\\
 \end{cases}
@@ -1211,7 +1211,7 @@ Calculate the probability that the total company loss is at least 1.
 
 -  `xu = function(y){1},`
 
--  `yl = function(x){1-x},`
+-  `yl = function(x){1 - x},`
 
 -  `yu = function(x){2})`
   
@@ -1282,7 +1282,7 @@ prob_xy <- iterated_integral(
   dx = 2,
   xl = function(y){0},
   xu = function(y){1},
-  yl = function(x){1-x},
+  yl = function(x){1 - x},
   yu = function(x){2})
   
 # display the answer
