@@ -1,23 +1,33 @@
 ---
-title       : Discrete Distributions using R
-description : This lab is about working with discrete distributions using R
-attachments :
+title: 'Discrete Distributions using R'
+description: 'This lab is about working with discrete distributions using R'
+attachments: null
+---
 
-
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:f68b666117
 ## <<<New Exercise>>>
 
+```yaml
+type: MultipleChoiceExercise
+key: f68b666117
+lang: r
+xp: 50
+skills: 1
+```
 
-*** =instructions
 
-*** =hint
 
-*** =pre_exercise_code
+`@possible_answers`
+
+
+`@hint`
+
+
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 
 ```

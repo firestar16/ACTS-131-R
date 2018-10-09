@@ -1,13 +1,19 @@
 ---
-title       : Integration using R
-description : This lab is about integrating one and two variable functions using R
-attachments :
-  
+title: 'Integration using R'
+description: 'This lab is about integrating one and two variable functions using R'
+attachments: null
+---
 
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:0d76418123
 ## SOA Exam P #34
+
+```yaml
+type: NormalExercise
+key: 0d76418123
+lang: r
+xp: 100
+skills: 1
+```
+
 The lifetime of a machine part has a continuous distribution on the
 interval $(0, 40)$ with probability density function $f(x)$, where $f(x)$ is
 proportional to $(10 + x)^{−2}$ on the interval. Calculate the probability
@@ -29,8 +35,7 @@ $$
 After that calculate the probability as 
 $$ P[X<6] = \int\limits_{0}^{6} f(x) \ dx $$
 
-
-*** =instructions
+`@instructions`
 * Load the `stats` package
 * Solve for the constant $c$
 * Define the density function $f(x)$
@@ -38,7 +43,7 @@ $$ P[X<6] = \int\limits_{0}^{6} f(x) \ dx $$
 * Assign your answer to `prob_x`
 * Disply the value of `prob_x`
 
-*** =hint
+`@hint`
 `library(stats)`
 
 
@@ -53,12 +58,12 @@ $$ P[X<6] = \int\limits_{0}^{6} f(x) \ dx $$
 
 `prob_x`
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Load the stats package
 
@@ -75,7 +80,7 @@ $$ P[X<6] = \int\limits_{0}^{6} f(x) \ dx $$
 # Display the value of prob_x
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Load the stats package
 library(stats)
@@ -93,7 +98,7 @@ prob_x <- integrate(f = f, lower =0, upper = 6)$value
 prob_x
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_error()
 test_object("c",
@@ -109,11 +114,18 @@ test_output_contains("prob_x")
 success_msg("Outstanding!")
 ```
 
+---
 
+## SOA Exam P #45
 
+```yaml
+type: NormalExercise
+key: ace2599d9b
+lang: r
+xp: 100
+skills: 1
+```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:ace2599d9b
-##SOA Exam P #45
 Let $X$ be a continuous random variable with density function
 $$
 f(x) = \begin{cases}
@@ -124,24 +136,22 @@ f(x) = \begin{cases}
 $$
 Calculate the expected value of $X$.
 
-
-*** =instructions
-
+`@instructions`
 - Assign the density function of $X$ to `f`
 - Use `integrate` with appropriate arguements to calculate the expected value of $X$
 - Assign your answer to `expected_value`
 
-*** =hint
+`@hint`
 Did you use `integrate()` with arguements `f = function(x){x*f(x)}`,`lower = -2`, and `upper = 4`? Did you define the density using
-`f <- function(x){(-2 < x & x < 4) * abs(x) / 10}`?  Did you only select the numerical result of `integrate`?  Did you assign the expected value to `expected_value` and print the result to the console? 
+`f <- function(x){(-2 < x & x < 4) * abs(x) / 10}`?  Did you only select the numerical result of `integrate`?  Did you assign the expected value to `expected_value` and print the result to the console?
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Load the stats package
 
@@ -158,7 +168,7 @@ Did you use `integrate()` with arguements `f = function(x){x*f(x)}`,`lower = -2`
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Load the stats package
 library(stats)
@@ -173,7 +183,7 @@ expected_value <- integrate(f = function(x){x * f(x)}, lower = -2, upper = 4)$va
 expected_value
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_error()
 test_object("f",
@@ -188,30 +198,37 @@ test_output_contains(expected_value,
 success_msg("Good job! You can solve exam P problems using R")
 ```
 
+---
 
---- type:NormalExercise lang:r xp:100 skills:1 key:5bcf4a8e2e
 ## SOA Exam P #55
+
+```yaml
+type: NormalExercise
+key: 5bcf4a8e2e
+lang: r
+xp: 100
+skills: 1
+```
+
 An insurance company's monthly claims are modeled by a continuous, positive random variable $X$ whose probability density function is proportional to $(1+x)^{-4}$, for $\ 0    <  \  x   <  \infty$.  Calculate the company's expected monthly claims.
 
-
-*** =instructions
-
+`@instructions`
 * Solve for the constant of proportionality, `c`.  
 * Assign the probability density function of $X$ to `f`
 * Calculate $E[X]$ using `integrate()`
 
-*** =hint
+`@hint`
 - Did you integrate $(1+x)^{-4}$ over the interval $(0, \infty)$ and assign the value to `c`?
 
 
 - Did you compute $\displaystyle{E[X] = \int\limits_0^{\infty} x f(x) \ dx}$?
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # load the stats package
 
@@ -229,7 +246,7 @@ An insurance company's monthly claims are modeled by a continuous, positive rand
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # load the stats package
 library(stats)
@@ -249,7 +266,7 @@ expected_value <- integrate(function(x){x * f(x)}, lower = 0,  upper = Inf)$valu
 expected_value
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_error()
 test_object("c",
@@ -268,11 +285,17 @@ test_output_contains(expected_value,
 success_msg("Good job! You are getting really good at this!")
 ```
 
+---
 
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:b2434ee5d2
 ## SOA Exam P #157
+
+```yaml
+type: NormalExercise
+key: b2434ee5d2
+lang: r
+xp: 100
+skills: 1
+```
 
 Let $X$ be a continuous random variable with density function
 
@@ -287,9 +310,7 @@ $$
 
 Calculate the value of $p$ such that $E[X] = 2$
 
-
-
-*** =instructions
+`@instructions`
 * load the stats package
 
 * Define a density function $f(x,p)$ as `f`
@@ -300,9 +321,9 @@ Calculate the value of $p$ such that $E[X] = 2$
 
 * Estimate a solution to the equation $ex(p) = 2$ using `which.min()`
 
-* Remember that $2 < p$ 
+* Remember that $2 < p$
 
-*** =hint
+`@hint`
 - Load both the stats package
 - Define `f` a a function of  $x$ and $p$
 - Use `integrate()` to define `ex(p)` 
@@ -311,12 +332,12 @@ Calculate the value of $p$ such that $E[X] = 2$
 - Save your answer as p_answer
 - Print p_answer
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # load the stats package
 
@@ -338,7 +359,7 @@ Calculate the value of $p$ such that $E[X] = 2$
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # load the stats package
 library(stats)
@@ -363,7 +384,7 @@ p_answer <- p_vals[index]
 p_answer
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_error()
 test_object("f",
@@ -378,9 +399,17 @@ test_output_contains(p_answer,
 success_msg("Good job! You are awesome at this!")
 ```
 
+---
 
---- type:NormalExercise lang:r xp:100 skills:1 key:4b21b3e7f4
 ## SOA Exam P # 178
+
+```yaml
+type: NormalExercise
+key: 4b21b3e7f4
+lang: r
+xp: 100
+skills: 1
+```
 
 The proportion $X$ of yearly dental claims that exceed 200 is a random variable with probability density function
 
@@ -394,9 +423,7 @@ $$
 
 Calculate $Var[X/(1-X)]$
 
-
-
-*** =instructions
+`@instructions`
 - the stats package is already loaded
 
 - Define the density function as `f`
@@ -409,16 +436,16 @@ Calculate $Var[X/(1-X)]$
 
 - Solve for $V[g(X)]$ and save as `var_g`
 
-*** =hint
+`@hint`
 * Make sure to define the density function as `f` and $X/ (X-1)$ as `g`
 * When you use `integrate`make sure to select the `value` using `$`
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 library(stats)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # define the density function as f
 
@@ -436,7 +463,7 @@ library(stats)
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # define the density function as f
 f <- function(x){(0 < x & x < 1) * 60 * x ^ 3 * (1 - x) ^ 2}
@@ -454,7 +481,7 @@ g <- function(x){x / (x-1)}
 (var_g = ex_g2 - (ex_g1) ^ 2)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_error()
 test_object("f",
@@ -475,10 +502,18 @@ test_object("var_g",
 success_msg("Awesome!! You are learning more and more about this.")
 ```
 
+---
 
-
---- type:NormalExercise lang:r xp:100 skills:1 key:f8b44f897f
 ## SOA Exam P #33
+
+```yaml
+type: NormalExercise
+key: f8b44f897f
+lang: r
+xp: 100
+skills: 1
+```
+
 The loss due to a fire in a commercial building is modeled by a random variable $X$ with density function
 
 $$
@@ -492,8 +527,7 @@ $$
 
 Given that a fire loss exceed 8, calculate the probability that it exceeds 16.
 
-
-*** =instructions
+`@instructions`
 * load the stats package
 * 
 * Assign the density function of $X$ to `f`
@@ -504,8 +538,7 @@ Given that a fire loss exceed 8, calculate the probability that it exceeds 16.
 
 * Compute the conditional probability $P[X > 16 | X > 8]$.  Assign to `cond_prob`
 
-*** =hint
-
+`@hint`
 `library(stats)`
 
 
@@ -528,12 +561,12 @@ Given that a fire loss exceed 8, calculate the probability that it exceeds 16.
 
 `integrate(f_A,lower = 16,upper = 20)$value)`
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # load the stats package
 
@@ -551,7 +584,7 @@ Given that a fire loss exceed 8, calculate the probability that it exceeds 16.
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # load the stats package
 library(stats)
@@ -570,7 +603,7 @@ f_A <- function(x){f(x) * (8 < x) / prob_A}
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_error()
 test_object("f",
@@ -588,9 +621,18 @@ test_object("cond_prob",
 success_msg("Cool!, you can even solve conditional probability questions using `integrate()`")
 ```
 
+---
 
---- type:NormalExercise lang:r xp:100 skills:1 key:c96f044016
 ## SOA Exam P # 121
+
+```yaml
+type: NormalExercise
+key: c96f044016
+lang: r
+xp: 100
+skills: 1
+```
+
 Let $X$ represent the age of an insured automobile involved in an accident.
 Let $Y$ represent the length of time the owner has insured the
 automobile at the time of the accident. $X$ and $Y$ have joint probability
@@ -609,8 +651,7 @@ $$
 Calculate the expected age of an insured automobile involved in an
 accident.
 
-
-*** =instructions
+`@instructions`
 * Load the `stats` package
 * `iterated_integral()` is already loaded
 * Define the joint density function `f(x, y)`
@@ -618,8 +659,7 @@ accident.
 * Use the formula
 $$E[X] = \displaystyle{\int\int x f(x,y) \ dx dy}$$
 
-*** =hint
-
+`@hint`
 `library(stats)`
 
 `f <- function(x, y){`
@@ -648,8 +688,7 @@ $\ \ $ `(1 / 64) * (10 - x * y ^ 2)}`
     
 `expected_value_x`
 
-
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 iterated_integral <- function(f , xl, xu, yl, yu, dx){
   # computes the iterated integral of f over the region defined by 
@@ -678,7 +717,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # load the stats package
 
@@ -694,7 +733,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # load the stats package
 library(stats)
@@ -720,16 +759,24 @@ expected_value_x
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_error()
 
 success_msg("Perfect!, Now you can compute iterated integrals using R!!")
 ```
 
+---
 
---- type:NormalExercise lang:r xp:100 skills:1 key:4872a61ca1
 ## SOA Exam P # 77
+
+```yaml
+type: NormalExercise
+key: 4872a61ca1
+lang: r
+xp: 100
+skills: 1
+```
 
 A device runs until either of two components fails, at which point the device stops running.  The joint density function of the lifetimes of the two components, both measured in hours, is
 
@@ -748,15 +795,14 @@ $$
 
 Calculate the probability that the device fails during its first hour of operation.
 
-*** =instructions
+`@instructions`
 * Load the `stats` package
 * `iterated_integral()` is already loaded
 * Define the joint density function `f(x, y)`
 * Define a function `r(x)` for the region of integration
 * Calculate $P[\min\\{X, Y\\} \leq 1]$ assign to prob_hour
 
-*** =hint
-
+`@hint`
 `library(stats)`
 
 
@@ -784,7 +830,7 @@ Calculate the probability that the device fails during its first hour of operati
 
 `prob_hour`
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 iterated_integral <- function(f , xl, xu, yl, yu, dx){
   # computes the iterated integral of f over the region defined by 
@@ -812,7 +858,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 }
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # load the stats package
 
@@ -830,7 +876,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # load the stats package
 library(stats)
@@ -855,7 +901,7 @@ prob_hour <-
 prob_hour
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_error()
 
@@ -866,9 +912,17 @@ test_object("prob_hour",
 success_msg("Perfect!, Another example of computing iterated integrals using R!!")
 ```
 
+---
 
---- type:NormalExercise lang:r xp:100 skills:1 key:15503309e8
 ## SOA Exam P #117
+
+```yaml
+type: NormalExercise
+key: 15503309e8
+lang: r
+xp: 100
+skills: 1
+```
 
 A company is reviewing tornado damage claims under a farm insurance policy.  Let $X$ be the portion of a claim representing damage to the house and let $Y$ be the portion of the same claim representing damage to the rest of the property.  The joint density of function of $X$ and $Y$ is
 
@@ -886,7 +940,7 @@ $$
 
 Calculate the probability that the portion of a claim representing damage to the house is less than 0.2.
 
-*** =instructions
+`@instructions`
 `iterated_integral` is already loaded
 
 Use `ls()` to verify this
@@ -899,8 +953,7 @@ Compute $P[X < 0.2]$
 
 Assign the probabiity to `prob_house_0.2`
 
-*** =hint
-
+`@hint`
 `library(stats)`
 
 
@@ -924,8 +977,7 @@ Assign the probabiity to `prob_house_0.2`
   
 `prob_house_0.2`
 
-
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 iterated_integral <- function(f , xl, xu, yl, yu, dx){
   # computes the iterated integral of f over the region defined by 
@@ -953,7 +1005,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 }
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # use ls() to see that iterated_integral is already defined
 
@@ -972,7 +1024,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # use ls() to see that iterated_integral is already defined
 ls()
@@ -1000,7 +1052,7 @@ prob_house_0.2
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_error()
 
@@ -1010,9 +1062,17 @@ test_object("prob_house_0.2",
 success_msg("Ecellent!, an example of computing iterated integrals over non-rectangular regions!!")
 ```
 
+---
 
---- type:NormalExercise lang:r xp:100 skills:1 key:1b8af88c71
-## SOA Exam P #90  
+## SOA Exam P #90
+
+```yaml
+type: NormalExercise
+key: 1b8af88c71
+lang: r
+xp: 100
+skills: 1
+```
 
 An insurance company sells two types of auto insurance policies: Basic and Deluxe. The time until the next Basic Policy claim is an exponential random variable with mean two days. The time until the next Deluxe Policy claim is an independent exponential random variable with mean three days. Calculate the probability that the next claim will be a Deluxe Policy claim.
 
@@ -1029,11 +1089,9 @@ f(x,y) & = &
 \end{eqnarray}
 $$
 
-In this question we want to compute the probability $P[Y < X]$. 
+In this question we want to compute the probability $P[Y < X]$.
 
-
-
-*** =instructions
+`@instructions`
 load the `stats` package
 
 use`ls()` to check for `iterated_integral`
@@ -1044,8 +1102,7 @@ use integration to compute $P[Y<X]$
 
 assign your answer to `prob_xy`
 
-*** =hint
-
+`@hint`
 `library(stats)`
 
 `ls()`
@@ -1070,7 +1127,7 @@ assign your answer to `prob_xy`
 
 `prob_xy`
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 iterated_integral <- function(f , xl, xu, yl, yu, dx){
   # computes the iterated integral of f over the region defined by 
@@ -1098,7 +1155,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 }
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # load the stats package
 
@@ -1116,7 +1173,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # load the stats package
 library(stats)
@@ -1143,7 +1200,7 @@ prob_xy
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_error()
 test_object("f",
@@ -1155,8 +1212,18 @@ test_output_contains("prob_xy")
 success_msg("Ecellent!, an example of computing iterated integrals with infinite integration limits!!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:eed5e04419
+---
+
 ## SOA Exam P #91
+
+```yaml
+type: NormalExercise
+key: eed5e04419
+lang: r
+xp: 100
+skills: 1
+```
+
 An insurance company insures a large number of drivers. Let $X$ be
 the random variable representing the company’s losses under collision
 insurance, and let $Y$ represent the company’s losses under liability insurance.
@@ -1173,8 +1240,7 @@ $$
 
 Calculate the probability that the total company loss is at least 1.
 
-
-*** =instructions
+`@instructions`
 * load the `stats` package
 
 
@@ -1189,7 +1255,7 @@ Calculate the probability that the total company loss is at least 1.
   
 * display the answer
 
-*** =hint
+`@hint`
 `library(stats)`
 
 
@@ -1218,7 +1284,7 @@ Calculate the probability that the total company loss is at least 1.
 
 `prob_xy`
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 iterated_integral <- function(f , xl, xu, yl, yu, dx){
   # computes the iterated integral of f over the region defined by 
@@ -1246,7 +1312,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 }
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # load the stats package
 
@@ -1264,7 +1330,7 @@ iterated_integral <- function(f , xl, xu, yl, yu, dx){
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # load the stats package
 library(stats)
@@ -1289,7 +1355,7 @@ prob_xy <- iterated_integral(
 prob_xy
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_error()
 test_object("f",
